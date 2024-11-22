@@ -1,0 +1,86 @@
+CREATE TABLE login
+(
+   cpr      CHARACTER VARYING (10),
+   pass     CHARACTER VARYING (20),
+   status   CHARACTER VARYING (1) DEFAULT 'a'::CHARACTER VARYING
+);
+CREATE TABLE Patient
+(
+ CPR  VARCHAR(10) UNIQUE PRIMARY KEY NOT NULL ,
+ Name VARCHAR(20) NOT NULL ,
+ City VARCHAR(50) NOT NULL 
+);
+CREATE TABLE MedicinePersonel
+(
+ ID       VARCHAR(10) UNIQUE PRIMARY KEY NOT NULL ,
+ Name     VARCHAR(20) NOT NULL ,
+ Speciality VARCHAR(20) NOT NULL 
+);
+CREATE TABLE Treatment
+(
+	TID SERIAL PRIMARY KEY,
+ CPR      VARCHAR(10)  NOT NULL   ,
+ Treatment VARCHAR(50) NOT NULL ,
+ ID        VARCHAR(10) NOT NULL ,
+ TreatedOn DATE NOT NULL ,
+ DiseaseID VARCHAR(10),
+
+
+ FOREIGN KEY (ID)
+  REFERENCES MedicinePersonel(ID),
+  FOREIGN KEY (CPR)
+  REFERENCES Patient(CPR),
+ 
+);
+
+CREATE TABLE Prescription
+(
+PID SERIAL PRIMARY KEY ,
+ CPR           VARCHAR(10) NOT NULL ,
+ ID        VARCHAR(10) NOT NULL ,
+ DiseaseID    VARCHAR(10) NOT NULL ,
+ MedicalProcedure VARCHAR(50) NOT NULL ,
+ Renewals        INT NOT NULL ,
+ Continous        BOOLEAN NOT NULL ,
+ DatePrescribed   DATE NOT NULL ,
+
+
+ FOREIGN KEY (CPR)
+  REFERENCES Patient(CPR),
+ FOREIGN KEY (ID)
+  REFERENCES MedicinePersonel(ID),
+ 
+);
+INSERT INTO MedicinePersonel(ID,Name,Speciality) VALUES(1,'Dr.Lector','Surgeon');
+INSERT INTO MedicinePersonel(ID,Name,Speciality) VALUES(2,'Dr.Radeva','Bacteriology');
+INSERT INTO MedicinePersonel(ID,Name,Speciality) VALUES(3,'Dr.Heisenberg','GP');
+INSERT INTO MedicinePersonel(ID,Name,Speciality) VALUES(4,'Dr.Yuriev','Neurologist');
+INSERT INTO MedicinePersonel(ID,Name,Speciality) VALUES(1,'Dr.Kirkegaard','Neurologist');
+INSERT INTO Patient(CPR,Name,City) VALUES(1004982354,'Aristoltelis','Athens');
+INSERT INTO Patient(CPR,Name,City) VALUES(1010349221,'Diogenes','Damascus');
+INSERT INTO Patient(CPR,Name,City) VALUES(1010349221,'Hannibal','Carthage');
+INSERT INTO Patient(CPR,Name,City) VALUES(1999990000,'Julius Ceasar','Rome');
+INSERT INTO Disease(DiseaseID,Name) VALUES(999,'LIGMA');
+INSERT INTO Disease(DiseaseID,Name) VALUES(9299,'Vitaminosis');
+INSERT INTO Disease(DiseaseID,Name) VALUES(199,'Vitaminosis');
+SET datestyle = "ISO, DMY";
+
+INSERT INTO Treatment(CPR,Treatment,ID,TreatedOn,DiseaseID) VALUES(1004982354,'Drink some water,boi',2,
+'11-11-1991',999);
+INSERT INTO Treatment(CPR,Treatment,ID,TreatedOn,DiseaseID) VALUES(1004982354,'Drink some asd,boi',2,
+'11-11-1891',199);
+INSERT INTO Treatment(CPR,Treatment,ID,TreatedOn,DiseaseID) VALUES(1004982354,'Drunk some asd,boi',2,
+'11-11-1891',199);
+
+INSERT INTO Prescription(CPR,ID,DiseaseID,MedicalProcedure,Renewals,Continous,DatePrescribed) VALUES(1004982354,2,
+999,'xD',0,True,'11-11-1891');
+INSERT INTO Prescription(CPR,ID,DiseaseID,MedicalProcedure,Renewals,Continous,DatePrescribed) VALUES(1004982354,2,
+999,'xD',0,False,'11-11-1891');
+INSERT INTO Prescription(CPR,ID,DiseaseID,MedicalProcedure,Renewals,Continous,DatePrescribed) VALUES(1004982354,2,
+999,'xD',0,False,'11-11-1891');
+
+
+
+
+
+
