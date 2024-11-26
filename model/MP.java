@@ -2,56 +2,48 @@ package model;
 
 import java.util.ArrayList;
 
-public class MP
-{
-   private String ID, Name, Specialization;
-   public String getID()
-   {
-      return ID;
-   }
+public class MP {
+    private String id, name, sp;
 
-   public void setID(String iD)
-   {
-      ID = iD;
-   }
+    public String getId() {
+        return id;
+    }
 
-   public String getName()
-   {
-      return Name;
-   }
+    public void setId(String iD) {
+        id = iD;
+    }
 
-   public void setName(String name)
-   {
-      Name = name;
-   }
+    public String getName() {
+        return name;
+    }
 
-   public String getSpecialization()
-   {
-      return Specialization;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-   public void setSpecialization(String specialization)
-   {
-      Specialization = specialization;
-   }
+    public String getSp() {
+        return sp;
+    }
 
-   public MP(String iD, String name, String specialization)
-   {
-      ID = iD;
-      Name = name;
-      Specialization = specialization;
-   }
+    public void setSp(String sp) {
+        this.sp = sp;
+    }
 
- //ID,Name,Speciality
-public ArrayList<Object> toList(){
-	ArrayList<Object> lis= new ArrayList<>();
-	lis.add(ID);
-	lis.add(Name);
-	lis.add(Specialization);
-	return lis;
-	
+    public MP(String id, String name, String specialization) {
+        this.id = id;
+        this.name = name;
+        sp = specialization;
+    }
 
-}
-   
-   
+    //ID,Name,Speciality
+    public ArrayList<Object> toList() {
+        ArrayList<Object> lis = new ArrayList<>();
+        lis.add(id);
+        lis.add(name);
+        lis.add(sp);
+        return lis;
+
+    }
+
+
 }

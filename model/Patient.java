@@ -2,58 +2,47 @@ package model;
 
 import java.util.ArrayList;
 
-public class Patient
-{
-   private String CPR, Name, Adress;
+public class Patient {
+    private String cpr, name, adress;
 
-   public String getCPR()
-   {
-      return CPR;
-   }
+    public String getCpr() {
+        return cpr;
+    }
 
-   public void setCPR(String cPR)
-   {
-      CPR = cPR;
-   }
+    public void setCpr(String cPR) {
+        cpr = cPR;
+    }
 
-   public String getName()
-   {
-      return Name;
-   }
+    public String getName() {
+        return name;
+    }
 
-   public void setName(String name)
-   {
-      Name = name;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-   public String getAdress()
-   {
-      return Adress;
-   }
+    public String getAdress() {
+        return adress;
+    }
 
-   public void setAdress(String adress)
-   {
-      Adress = adress;
-   }
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 
-   public Patient(String cPR, String name, String adress)
-   {
-      CPR = cPR;
-      Name = name;
-      Adress = adress;
-   }
-   
-   public ArrayList<Object> toList(){
-	   //CPR,Name,City
-		ArrayList<Object> lis= new ArrayList<>();
-		lis.add(CPR);
-		lis.add(Name);
-		lis.add(Adress);
-		return lis;
-		
+    public Patient(String cpr, String name, String adress) {
+        this.cpr = cpr;
+        this.name = name;
+        this.adress = adress;
+    }
 
-	}
+    public ArrayList<Object> toList() {
+        //CPR,Name,City
+        ArrayList<Object> lis = new ArrayList<>();
+        lis.add(cpr);
+        lis.add(name);
+        lis.add(adress);
+        return lis;
+    }
 
-   
-   
+
 }
